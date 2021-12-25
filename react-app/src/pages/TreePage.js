@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import SearchBar from '../components/SearchBar';
 import TreeResults from '../components/TreeResults';
+import fetchDom from '../scripts/fetchDom';
 
 const TreePage = () => {
 	const [query, setQuery] = useState('');
@@ -18,6 +19,8 @@ const TreePage = () => {
 			return;
 		} else {
 			// TODO - treeify here
+      const body = fetchDom(query);
+      console.log(body);
 		}
 	};
 
