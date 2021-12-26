@@ -1,7 +1,7 @@
 const express = require('express');
-const fetchDom = require('./scripts/fetchDom');
-const app = express();
 const bodyParser = require('body-parser');
+const app = express();
+const fetchDom = require('./scripts/fetchDom');
 const extractData = require('./scripts/extractData');
 const locateTree = require('./scripts/locateTree');
 
@@ -16,7 +16,8 @@ app.post('/', async (req, res) => {
 		const locatedTree = locateTree(extractedBody);
 		res.send({ treeDom: locatedTree });
 	} catch (err) {
-		res.status(500).send({ error: new Error(err) });
+		// throw new Error(err.message);
+		res.status(500).send({ error: err.message });
 	}
 });
 

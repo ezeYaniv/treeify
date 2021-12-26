@@ -9,7 +9,7 @@ async function fetchDom(url) {
 		const { document } = new JSDOM(data).window;
 		return document.body;
 	} catch (err) {
-		throw new Error('Error fetching DOM: ', err);
+		throw new Error('Error fetching the DOM - check your URL and try again');
 	}
 }
 

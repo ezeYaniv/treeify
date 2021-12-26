@@ -1,4 +1,4 @@
-import { useState, useReducer } from 'react';
+import React, { useState, useReducer } from 'react';
 import axios from 'axios';
 import SearchBar from '../components/SearchBar';
 import TreeResults from '../components/TreeResults';
@@ -39,47 +39,57 @@ const reducer = (state, action) => {
 
 const TreePage = () => {
 	const [query, setQuery] = useState('');
-	const [treeBody, setTreeBody] = useState({});
 
-	const [state, dispatch] = useReducer(reducer, initialState);
+	const [treeBodyQuery, dispatch] = useReducer(reducer, initialState);
 
+	// ~~~~~~~~~~~~ BACKEND API CALL ~~~~~~~~~~~~~~~
 	const callBackendAPI = async (query) => {
-		const response = await axios.post('/', {
-			url: query,
-		});
-		console.log(response.status);
-		const body = response;
-
-		if (response.status !== 200) {
-			throw Error(body.message);
+		try {
+			const response = await axios.post('/', {
+				url: query,
+			});
+			return response;
+		} catch (err) {
+			throw Error(err.message);
 		}
-		return body;
 	};
 
 	// ~~~~~~~~~~~ FORM HANDLING ~~~~~~~~~~~~~
-	const handleQueryChange = (e) => {
+	const handleQueryChange = React.useCallback((e) => {
 		setQuery(e.target.value);
-	};
-	const onFormSubmit = (e) => {
-		e.preventDefault();
-		const regex = /^(http:\/\/|https:\/\/|www.)/;
-		if (!regex.test(query)) {
-			alert('Invalid URL: it should start with https://, http://, or www.');
-			return;
-		} else {
-			// TODO - treeify here
-			/* send API request to our express server,
-			await response */
-			callBackendAPI(query)
-				.then((res) => setTreeBody(res))
-				.catch((err) => console.error(err));
-		}
-	};
+	}, []);
+	const onFormSubmit = React.useCallback(
+		(e) => {
+			e.preventDefault();
+			const regex = /^(http:\/\/|https:\/\/|www.)/;
+			if (!regex.test(query)) {
+				alert('Invalid URL: it should start with https://, http://, or www.');
+				return;
+			} else {
+				dispatch({ type: 'fetchDataStart' });
+				callBackendAPI(query)
+					.then((res) =>
+						dispatch({
+							type: 'fetchDataSuccess',
+							data: res.data.treeDom,
+						})
+					)
+					.catch((err) => dispatch({ type: 'fetchDataFail', error: err }));
+			}
+		},
+		[query]
+	);
 
 	return (
 		<>
 			<SearchBar query={query} handleQueryChange={handleQueryChange} onFormSubmit={onFormSubmit} />
-			{!!Object.keys(treeBody).length && <TreeResults />}
+			{treeBodyQuery.loading ? (
+				<p>Loading...</p>
+			) : treeBodyQuery.error ? (
+				<p>Oops, there was an error with the website you tried. Check URL and try again!</p>
+			) : (
+				!!treeBodyQuery.data && <TreeResults />
+			)}
 		</>
 	);
 };
