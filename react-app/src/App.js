@@ -1,4 +1,5 @@
-import './App.css';
+import './App.css'
+// import './styles/SearchBar.css';
 import TreePage from './pages/TreePage';
 
 function App() {

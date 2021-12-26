@@ -81,7 +81,7 @@ const TreePage = () => {
 	);
 
 	return (
-		<>
+		<div className="treePage__container">
 			<SearchBar query={query} handleQueryChange={handleQueryChange} onFormSubmit={onFormSubmit} />
 			{treeBodyQuery.loading ? (
 				<p>Loading...</p>
@@ -90,7 +90,7 @@ const TreePage = () => {
 			) : (
 				!!treeBodyQuery.data && <TreeResults />
 			)}
-		</>
+		</div>
 	);
 };
 

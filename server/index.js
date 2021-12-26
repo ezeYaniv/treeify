@@ -16,7 +16,6 @@ app.post('/', async (req, res) => {
 		const locatedTree = locateTree(extractedBody);
 		res.send({ treeDom: locatedTree });
 	} catch (err) {
-		// throw new Error(err.message);
 		res.status(500).send({ error: err.message });
 	}
 });

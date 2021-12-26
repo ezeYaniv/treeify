@@ -1,38 +1,43 @@
-.App {
-  text-align: center;
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+	box-sizing: border-box;
+	background-color: rgb(235, 255, 238);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.bubble {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 50px;
+	height: 50px;
+	background-color: rgb(220, 235, 222);
+	border-radius: 50%;
+	border: 1px solid rgb(168, 197, 171);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.bubble:hover {
+	background-color: rgb(201, 216, 203);
+	border: 1px solid rgb(151, 172, 153);
+	cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.bubbleText {
+	color: rgb(30, 53, 30);
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.tooltipWrapper {
+	display: flex;
+	flex-direction: column;
+	width: 100px;
+	background-color: rgb(220, 235, 222);
+	border: 1px solid rgb(168, 197, 171);
+	padding: 10px 15px;
 }
