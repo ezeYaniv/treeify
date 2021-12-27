@@ -11,6 +11,35 @@ body {
 	background-color: rgb(235, 255, 238);
 }
 
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: #1d3823;
+}
+
+@font-face {
+	font-family: Tree;
+	src: url(./styles/snacker-comic-font/SnackerComicPersonalUseOnly-g3Z5.ttf);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: Tree, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* dark gray - 3c403d */
+/* dark green - 1d3823 */
+/* light brown - a67b51 */
+/* dark brown - 84563c */
+/* light green - rgb(235, 255, 238) */
+
 .bubble {
 	display: flex;
 	align-items: center;

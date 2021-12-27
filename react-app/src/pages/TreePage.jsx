@@ -2,6 +2,8 @@ import React, { useState, useReducer } from 'react';
 import axios from 'axios';
 import SearchBar from '../components/SearchBar';
 import TreeResults from '../components/TreeResults';
+import Loader from '../components/Loader';
+import '../styles/TreePage.css';
 
 const initialState = {
 	loading: false,
@@ -63,7 +65,7 @@ const TreePage = () => {
 			e.preventDefault();
 			const regex = /^(http:\/\/|https:\/\/|www.)/;
 			if (!regex.test(query)) {
-				alert('Invalid URL: it should start with https://, http://, or www.');
+				alert('Invalid URL: it should start with https:// or http://');
 				return;
 			} else {
 				dispatch({ type: 'fetchDataStart' });
@@ -81,14 +83,19 @@ const TreePage = () => {
 	);
 
 	return (
-		<div className="treePage__container">
-			<SearchBar query={query} handleQueryChange={handleQueryChange} onFormSubmit={onFormSubmit} />
+		<div className="treepage__container">
+			<SearchBar
+				query={query}
+				handleQueryChange={handleQueryChange}
+				onFormSubmit={onFormSubmit}
+				loading={treeBodyQuery.loading}
+			/>
 			{treeBodyQuery.loading ? (
-				<p>Loading...</p>
+				<Loader />
 			) : treeBodyQuery.error ? (
 				<p>Oops, there was an error with the website you tried. Check URL and try again!</p>
 			) : (
-				!!treeBodyQuery.data && <TreeResults />
+				!!treeBodyQuery.data && <TreeResults treeDom={treeBodyQuery.data} />
 			)}
 		</div>
 	);

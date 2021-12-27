@@ -1,0 +1,20 @@
+.header__wrapper {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	background-color: #84563c;
+  margin-bottom: 2rem;
+}
+
+.logo__container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.logo__logo {
+  color: white;
+  margin: 0.5rem;
+}

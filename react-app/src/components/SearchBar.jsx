@@ -1,13 +1,15 @@
 import React from 'react';
 import '../styles/SearchBar.css';
 
-const SearchBar = ({ query, handleQueryChange, onFormSubmit }) => {
+const SearchBar = ({ query, handleQueryChange, onFormSubmit, loading }) => {
 	return (
 		<div className="searchform__wrapper">
 			<div className="content__container">
 				<p className="searchform__text">Please input a URL you'd like to Treeify.</p>
 				<form onSubmit={onFormSubmit}>
-					<label htmlFor="inputQuery" className="searchform__label">URL</label>
+					<label htmlFor="inputQuery" className="searchform__label">
+						URL
+					</label>
 					<input
 						id="inputQuery"
 						value={query}
@@ -17,10 +19,10 @@ const SearchBar = ({ query, handleQueryChange, onFormSubmit }) => {
 					/>
 					<div className="button__container">
 						<input
-							className="button"
 							type="submit"
-							value="Treeify"
-							className="searchform__button"
+							value={loading ? 'Loading...' : 'Treeify'}
+							className={`searchform__button ${loading ? 'button__loading' : ''}`}
+							disabled={!!loading}
 						/>
 					</div>
 				</form>

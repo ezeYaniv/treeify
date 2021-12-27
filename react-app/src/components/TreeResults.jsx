@@ -1,9 +1,10 @@
 import React from 'react';
 
-const TreeResults = () => {
-  return (
-    <p>Tree results</p>
-  )
-}
+const TreeResults = ({ treeDom }) => {
+	
+  
+  
+  return <p>Tree results</p>;
+};
 
 export default TreeResults;

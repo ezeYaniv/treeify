@@ -1,22 +1,7 @@
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	color: #1d3823;
-}
-
-/* dark gray - 3c403d */
-/* dark green - 1d3823 */
-/* light brown - a67b51 */
-/* dark brown - 84563c */
-/* light green - rgb(235, 255, 238) */
-
 .searchform__wrapper {
 	display: flex;
 	justify-content: center;
+	margin-bottom: 2rem;
 }
 
 .content__container {
@@ -69,15 +54,17 @@ h6 {
 }
 
 .searchform__button:hover,
-.searchform__button:focus {
+.searchform__button:focus-visible {
 	background-color: #1d3823;
 	color: rgb(235, 255, 238);
 }
 
-.searchform__button:focus-visible {
-	outline-color: #1d3823;
-}
-
 .searchform__button:active {
 	transform: translateY(1px);
+}
+
+.button__loading {
+	cursor:not-allowed;
+	background-color: inherit!important;
+	color: #1d3823!important;
 }
