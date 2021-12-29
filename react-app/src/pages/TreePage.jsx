@@ -84,7 +84,7 @@ const TreePage = () => {
 
 	return (
 		<div className="treepage__container">
-			<h1 className="treepage__header">Treeify</h1>
+			<h1 className="treepage__header">🌳 Treeify 🌳</h1>
 			<SearchBar
 				query={query}
 				handleQueryChange={handleQueryChange}

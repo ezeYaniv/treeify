@@ -1,6 +1,4 @@
 .results__wrapper {
-	display: flex;
-	justify-content: center;
 	width: 100%;
 }
 
@@ -8,6 +6,11 @@
 	overflow-x: scroll;
 	display: flex;
 	width: 100%;
+}
+
+.sketch__container.narrow {
+	justify-content: center;
+	overflow-x: auto;
 }
 
 /* Size of tooltip: 180px width */

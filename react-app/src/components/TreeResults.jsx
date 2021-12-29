@@ -5,10 +5,10 @@ import { sizeCanvas } from '../scripts/sizeCanvas';
 
 const TreeResults = ({ treeDom, canvasOffsets }) => {
 	const scrollRef = useRef(null);
-	console.log(treeDom, canvasOffsets, document.documentElement.clientWidth);
+	// console.log(treeDom, canvasOffsets, document.documentElement.clientWidth);
 	const framesPerLevel = 60;
 	const canvasSize = sizeCanvas(treeDom);
-	// call a locate tree function that takes the document.documentElement.clientWidth - this needs to be used to add to each node's location: location + (clientWidth - furthestRight)/2 
+	// call a locate tree function that takes the document.documentElement.clientWidth - this needs to be used to add to each node's location: location + (clientWidth - furthestRight)/2
 	let setup = (p5, parentRef) => {
 		p5.createCanvas(canvasSize.x + canvasOffsets.x, canvasSize.y + canvasOffsets.y + 100).parent(
 			// added 100 to height to offset tooltip height
@@ -83,7 +83,8 @@ const TreeResults = ({ treeDom, canvasOffsets }) => {
 		const treeCont = document.getElementById('scrollContainer');
 		treeCont.scrollLeft = (treeCont.scrollWidth - window.innerWidth - 180) / 2; // Note: 180 is to balance tooltip width added to right side
 		scrollRef.current.scrollIntoView({ behavior: 'smooth' });
-	}, [treeDom]);
+		if (canvasSize.x < window.innerWidth) treeCont.classList.add('narrow');
+	}, []);
 
 	return (
 		<div className="results__wrapper" ref={scrollRef}>
@@ -97,8 +98,8 @@ const TreeResults = ({ treeDom, canvasOffsets }) => {
 						// 	canvasSize.x > document.documentElement.clientWidth
 						// 		? ''
 						// 		: document.documentElement.clientWidth,
-						display: "flex",
-						justifyContent: "center"
+						// display: 'flex',
+						// justifyContent: 'center',
 					}}
 				/>
 			</div>

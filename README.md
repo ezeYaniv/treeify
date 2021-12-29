@@ -7,6 +7,9 @@ This web app fetches any website's DOM and displays it in visual form - as a tre
 
 ## Usage
 Visit *** for a working demo of the app.
+Some suggestions for good-looking URLs:
+- https://google.com
+
 
 ---
 
