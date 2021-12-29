@@ -1,4 +1,4 @@
-# Treeify
+# 🌳 Treeify 🌳
 
 ## Introduction
 This web app fetches any website's DOM and displays it in visual form - as a tree!
