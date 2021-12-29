@@ -15,7 +15,7 @@ Visit *** for a working demo of the app.
 * Express backend (asynchronous logic, error handling)
 * React frontend (form validation, POST request to server, UI gracefully handles loading & error states)
 * Tree traversal algorithms to build the DOM object and draw the tree
-* p5.js creative coding tool
+* p5.js embedded in React through useRef & useEffect hooks
 
 ### Summary
 

@@ -1,0 +1,77 @@
+/* Size of tooltip: 180px width */
+
+.leaf__container {
+	visibility: hidden;
+	opacity: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 5px 1px;
+	min-width: 50px;
+	height: 50px;
+	background-color: rgb(235, 255, 238);
+	border-radius: 50%;
+	border: 1px solid #1d3823;
+	transform: translate(-50%, -50%);
+	color: rgb(30, 53, 30);
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.leaf__container.visible {
+	visibility: visible;
+	transition: opacity 0.5s;
+	opacity: 1;
+}
+
+.leaf__container:hover {
+	background-color: #1d3823;
+	color: white;
+	cursor: help;
+}
+
+.leaf__tooltip {
+	visibility: hidden;
+	opacity: 0;
+	min-width: 180px;
+	background-color: rgb(235, 255, 238);
+	border: 1px solid #1d3823;
+	color: #1d3823;
+	padding: 1rem;
+	position: absolute;
+	top: 0;
+	left: 125%;
+	transform: translateX(-5px);
+}
+
+.leaf__tooltip:hover {
+	cursor: default;
+}
+
+.leaf__tooltip:hover p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	cursor: text;
+}
+
+.leaf__container:hover .leaf__tooltip {
+	visibility: visible;
+	opacity: 1;
+	transform: translateX(0px);
+	transition: opacity 0.2s, transform 0.2s;
+}
+
+.leaf__tooltip:before {
+	z-index: 0;
+	position: absolute;
+	width: 0;
+	height: 0;
+	content: '';
+	left: -15px;
+	border-width: 7px;
+	border-style: solid;
+	border-color: transparent #1d3823 transparent transparent;
+}

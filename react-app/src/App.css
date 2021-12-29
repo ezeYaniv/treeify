@@ -1,3 +1,10 @@
+/* dark gray - 3c403d */
+/* dark green - 1d3823 */
+/* light brown - a67b51 */
+/* dark brown - 84563c */
+/* light green - rgb(235, 255, 238) */
+
+
 *,
 *::before,
 *::after {
@@ -8,7 +15,7 @@
 
 body {
 	box-sizing: border-box;
-	background-color: rgb(235, 255, 238);
+	background-color: #fcf0e1;
 }
 
 p,
@@ -33,12 +40,6 @@ h5,
 h6 {
 	font-family: Tree, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-
-/* dark gray - 3c403d */
-/* dark green - 1d3823 */
-/* light brown - a67b51 */
-/* dark brown - 84563c */
-/* light green - rgb(235, 255, 238) */
 
 .bubble {
 	display: flex;

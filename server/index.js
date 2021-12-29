@@ -14,7 +14,7 @@ app.post('/', async (req, res) => {
 		const domBody = await fetchDom(url);
 		const extractedBody = extractData(domBody);
 		const locatedTree = locateTree(extractedBody);
-		res.send({ treeDom: locatedTree });
+		res.send({ treeDom: locatedTree.node, canvasOffsets: locatedTree.canvasOffsets });
 	} catch (err) {
 		res.status(500).send({ error: err.message });
 	}

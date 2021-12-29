@@ -73,7 +73,7 @@ const TreePage = () => {
 					.then((res) =>
 						dispatch({
 							type: 'fetchDataSuccess',
-							data: res.data.treeDom,
+							data: res.data,
 						})
 					)
 					.catch((err) => dispatch({ type: 'fetchDataFail', error: err }));
@@ -95,7 +95,12 @@ const TreePage = () => {
 			) : treeBodyQuery.error ? (
 				<p>Oops, there was an error with the website you tried. Check URL and try again!</p>
 			) : (
-				!!treeBodyQuery.data && <TreeResults treeDom={treeBodyQuery.data} />
+				!!treeBodyQuery.data && (
+					<TreeResults
+						treeDom={treeBodyQuery.data.treeDom}
+						canvasOffsets={treeBodyQuery.data.canvasOffsets}
+					/>
+				)
 			)}
 		</div>
 	);
