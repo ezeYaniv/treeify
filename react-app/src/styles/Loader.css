@@ -1,10 +1,11 @@
 #loader {
+	margin-top: 3rem;
 	z-index: 1;
 	width: 120px;
 	height: 120px;
-	border: 20px solid #e9cbae;
+	border: 20px solid #ec9f52;
 	border-radius: 50%;
-	border-top: 20px solid #84563c;
+	border-top: 20px solid #864b29;
 	-webkit-animation: spin 2s linear infinite;
 	animation: spin 2s linear infinite;
 }

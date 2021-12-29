@@ -1,9 +1,14 @@
-/* dark gray - 3c403d */
-/* dark green - 1d3823 */
+/* rich dark green - 062e0f */
 /* light brown - a67b51 */
-/* dark brown - 84563c */
-/* light green - rgb(235, 255, 238) */
+/* dark brown - 864b29 */
+/* light gray - f0f0f0 */
+/* orangey - ec9f52 */
 
+
+/* OLD dark green - 1d3823 */
+/* dark gray - 3c403d */
+/* light green - rgb(235, 255, 238) */
+/* light beige: fff7ec */
 
 *,
 *::before,
@@ -15,7 +20,7 @@
 
 body {
 	box-sizing: border-box;
-	background-color: #fcf0e1;
+	background-color: #062e0f;
 }
 
 p,
@@ -25,7 +30,7 @@ h3,
 h4,
 h5,
 h6 {
-	color: #1d3823;
+	color: #062e0f;
 }
 
 @font-face {
@@ -41,33 +46,29 @@ h6 {
 	font-family: Tree, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.bubble {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 50px;
-	height: 50px;
-	background-color: rgb(220, 235, 222);
-	border-radius: 50%;
-	border: 1px solid rgb(168, 197, 171);
+.github-ribbon {
+	position: absolute;
+	right: 0px;
+	width: 150px;
+	height: 150px;
+	overflow: hidden;
+	z-index: 99999;
+	top: 0px;
 }
-
-.bubble:hover {
-	background-color: rgb(201, 216, 203);
-	border: 1px solid rgb(151, 172, 153);
-	cursor: pointer;
-}
-
-.bubbleText {
-	color: rgb(30, 53, 30);
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.tooltipWrapper {
-	display: flex;
-	flex-direction: column;
-	width: 100px;
-	background-color: rgb(220, 235, 222);
-	border: 1px solid rgb(168, 197, 171);
-	padding: 10px 15px;
+.github-ribbon a {
+	display: inline-block;
+	width: 200px;
+	overflow: hidden;
+	padding: 6px 0px;
+	text-align: center;
+	transform: rotate(45deg);
+	text-decoration: none;
+	color: rgb(255, 255, 255);
+	position: inherit;
+	right: -40px;
+	font: 700 13px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 3px 0px;
+	background-color: #864b29;
+	top: 45px;
+	background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15));
 }

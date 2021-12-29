@@ -1,3 +1,15 @@
+.results__wrapper {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+.sketch__container {
+	overflow-x: scroll;
+	display: flex;
+	width: 100%;
+}
+
 /* Size of tooltip: 180px width */
 
 .leaf__container {
@@ -9,11 +21,11 @@
 	padding: 0 5px 1px;
 	min-width: 50px;
 	height: 50px;
-	background-color: rgb(235, 255, 238);
+	background-color: #f0f0f0;
 	border-radius: 50%;
-	border: 1px solid #1d3823;
+	border: 1px solid #062e0f;
 	transform: translate(-50%, -50%);
-	color: rgb(30, 53, 30);
+	color: #062e0f;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -24,8 +36,7 @@
 }
 
 .leaf__container:hover {
-	background-color: #1d3823;
-	color: white;
+	background-color: #fec017;
 	cursor: help;
 }
 
@@ -33,9 +44,10 @@
 	visibility: hidden;
 	opacity: 0;
 	min-width: 180px;
-	background-color: rgb(235, 255, 238);
-	border: 1px solid #1d3823;
-	color: #1d3823;
+	background-color: #fff1cc;
+	/* border: 1px solid #062e0f; */
+	border-radius: 5px;
+	color: #062e0f;
 	padding: 1rem;
 	position: absolute;
 	top: 0;
@@ -59,7 +71,7 @@ h6 {
 
 .leaf__container:hover .leaf__tooltip {
 	visibility: visible;
-	opacity: 1;
+	opacity: 0.95;
 	transform: translateX(0px);
 	transition: opacity 0.2s, transform 0.2s;
 }
@@ -70,8 +82,8 @@ h6 {
 	width: 0;
 	height: 0;
 	content: '';
-	left: -15px;
+	left: -13px;
 	border-width: 7px;
 	border-style: solid;
-	border-color: transparent #1d3823 transparent transparent;
+	border-color: transparent #f0f0f0 transparent transparent;
 }

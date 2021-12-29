@@ -4,3 +4,20 @@
   flex-direction: column;
   align-items: center;
 }
+
+.treepage__header {
+  margin-top: 5rem;
+  margin-bottom: 4rem;
+  color: #ec9f52;
+  font-size: 5rem;
+}
+
+.divider {
+  width: calc(100% - 100px);
+  border-bottom: 2px solid #ec9f52;
+}
+
+.error__text {
+  color: #f0f0f0;
+  margin-top: 3rem;
+}

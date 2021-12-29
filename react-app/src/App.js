@@ -1,11 +1,14 @@
 import './App.css';
 import TreePage from './pages/TreePage';
-import Header from './components/Header';
 
 function App() {
 	return (
 		<div className="App">
-			<Header />
+			<div className="github-ribbon">
+				<a target="_blank" href="https://github.com/ezeYaniv/treeify" rel="noreferrer">
+					Fork me on GitHub
+				</a>
+			</div>
 			<TreePage />
 		</div>
 	);

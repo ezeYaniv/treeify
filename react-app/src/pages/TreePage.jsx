@@ -84,16 +84,20 @@ const TreePage = () => {
 
 	return (
 		<div className="treepage__container">
+			<h1 className="treepage__header">Treeify</h1>
 			<SearchBar
 				query={query}
 				handleQueryChange={handleQueryChange}
 				onFormSubmit={onFormSubmit}
 				loading={treeBodyQuery.loading}
 			/>
+			<div className="divider" />
 			{treeBodyQuery.loading ? (
 				<Loader />
 			) : treeBodyQuery.error ? (
-				<p>Oops, there was an error with the website you tried. Check URL and try again!</p>
+				<p className="error__text">
+					Oops, there was an error with the website you tried. Please check the URL and try again!
+				</p>
 			) : (
 				!!treeBodyQuery.data && (
 					<TreeResults

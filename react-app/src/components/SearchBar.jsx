@@ -7,9 +7,9 @@ const SearchBar = ({ query, handleQueryChange, onFormSubmit, loading }) => {
 			<div className="content__container">
 				<p className="searchform__text">Please input a URL you'd like to Treeify.</p>
 				<form onSubmit={onFormSubmit}>
-					<label htmlFor="inputQuery" className="searchform__label">
+					{/* <label htmlFor="inputQuery" className="searchform__label">
 						URL
-					</label>
+					</label> */}
 					<input
 						id="inputQuery"
 						value={query}
