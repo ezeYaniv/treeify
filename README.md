@@ -8,6 +8,8 @@ This web app fetches any website's DOM and displays it in visual form - as a tre
 
 ## Usage
 
+### Demo
+
 Visit https://treeify-app.herokuapp.com/ for a working demo of the app.
 Some suggestions for good-looking URLs:
 
@@ -17,18 +19,15 @@ Some suggestions for good-looking URLs:
 
 Warning: if a website has too large of a DOM, tree rendering may slow down significantly, or it may try to render on a canvas larger than your browser will allow. If this happens, reload the tab (or close and reopen) and try again with a different URL.
 
+### Run Locally
+
+1. Clone or download the code into a directory of your choosing
+2. In the project's root directory, run `yarn start` to start the Express server and verify CLI prints `App listening at port: 3001`
+3. In the project's client directory (`cd client`), run `yarn start` to start the React app
+
 ---
 
 ## Under the Hood
-
-### Technologies Applied & Skills Learned
-
-- Express backend (asynchronous logic, error handling)
-- React frontend (form validation, POST request to server, UI gracefully handles loading & error states)
-- Depth-first and breadth-first tree traversal algorithms to build the DOM object and draw the tree
-- p5.js embedded in React through useRef & useEffect hooks
-
-### Summary
 
 ### How It Works
 
@@ -39,15 +38,23 @@ Warning: if a website has too large of a DOM, tree rendering may slow down signi
 5. React app receives data from the server
 6. React app renders the tree on screen
 
+### Technologies Applied & Skills Learned
+
+- Express backend (asynchronous logic, error handling)
+- React frontend (form validation, POST request to server, UI gracefully handles loading & error states)
+- Depth-first and breadth-first tree traversal algorithms to build the DOM object and draw the tree
+- p5.js embedded in React through useRef & useEffect hooks
+
 ### Known Issues & Bugs
 
 Issues can be found in this repo's [Issues](url) tab.
 
 ### Challenge/Discussion Section
 
-Drawing a balanced, good-looking tree is harder than it sounds. Credit to Bill Mill for [this extensive article](https://llimllib.github.io/pymag-trees/) discussing a few principles to follow.
+Drawing a balanced, good-looking tree is harder than it sounds. Credit to [Bill Mill](https://github.com/llimllib) for [this extensive article](https://llimllib.github.io/pymag-trees/) discussing methods and key principles.
 
 Tl;dr:
+
 **Principle 1**: _The edges of the tree should not cross each other._
 
 **Principle 2**: _All nodes at the same depth should be drawn on the same horizontal line. This helps make clear the structure of the tree._
@@ -60,4 +67,4 @@ Tl;dr:
 
 ## Screenshots
 
-## [treeify screenshot]("./extras/screenshots/Treeify_screenshot.JPG")
+## ![treeify screenshot]("./extras/screenshots/Treeify_screenshot.JPG")
