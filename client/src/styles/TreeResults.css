@@ -1,17 +1,27 @@
+/* ~~~~~~~~~~~~~ CONTAINERS & WRAPPERS ~~~~~~~~~~~~~ */
 .results__wrapper {
 	width: 100%;
+	/* position: relative; */
 }
 
-.sketch__container {
+.scroll__container {
 	overflow-x: scroll;
 	display: flex;
-	width: 100%;
+	transform-origin: top;
+	/* border: 1px white solid; */
 }
 
-.sketch__container.narrow {
+[data-testid='react-p5'] {
+	transform-origin: top;
+	position: relative;
+}
+
+.scroll__container.narrow {
 	justify-content: center;
 	overflow-x: auto;
 }
+
+/* ~~~~~~~~~~~~~ INDIVIDUAL NODE BUBBLES ~~~~~~~~~~~~~ */
 
 /* Size of tooltip: 180px width */
 
@@ -43,6 +53,7 @@
 	cursor: help;
 }
 
+/* ~~~~~~~~~~~~~ TOOLTIP ~~~~~~~~~~~~~ */
 .leaf__tooltip {
 	visibility: hidden;
 	opacity: 0;
@@ -89,4 +100,37 @@ h6 {
 	border-width: 7px;
 	border-style: solid;
 	border-color: transparent #f0f0f0 transparent transparent;
+}
+
+/* ~~~~~~~~~~~~~ ZOOM BUTTONS ~~~~~~~~~~~~~ */
+.zoom__wrapper {
+	display: flex;
+	flex-direction: column;
+	position: sticky;
+	top: 12px;
+	align-items: flex-end;
+	margin-right: 50px;
+	margin-top: 6px;
+	z-index: 10001;
+	scroll-margin-top: 1rem;
+}
+
+.zoom__button {
+	cursor: pointer;
+	width: 45px;
+	height: 45px;
+	background-color: #f0f0f0;
+	border: none;
+	border-radius: 3px;
+	outline: none;
+	font-size: 1.5rem;
+	text-align: center;
+}
+
+.zoom__wrapper .zoom__button:first-of-type {
+	margin-bottom: 6px;
+}
+
+.zoom__button:hover {
+	background-color: #fec017;
 }

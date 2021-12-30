@@ -5,18 +5,85 @@ import { sizeCanvas } from '../scripts/sizeCanvas';
 
 const TreeResults = ({ treeDom, canvasOffsets }) => {
 	const scrollRef = useRef(null);
-	// console.log(treeDom, canvasOffsets, document.documentElement.clientWidth);
 	const framesPerLevel = 60;
 	const canvasSize = sizeCanvas(treeDom);
+
+	useEffect(() => {
+		let zoom = 1;
+		const scrollC = document.getElementById('scroll__container');
+		const p5Sketch = document.querySelector("[data-testid='react-p5']");
+		const canvasC = document.getElementById('defaultCanvas0');
+		const initCanvas = { width: canvasC.clientWidth, height: canvasC.clientHeight };
+		const initScroll = { width: scrollC.clientWidth, height: scrollC.clientHeight };
+		const initSketch = { width: p5Sketch.clientWidth, height: p5Sketch.clientHeight };
+
+		// ~~~~~~~~~ BEHAVIOR ONCE COMPONENT IS MOUNTED ~~~~~~~~~~~
+		p5Sketch.style.height = `${initCanvas.height}px`;
+		scrollC.style.height = `${initScroll}px`;
+
+		scrollC.scrollLeft = (scrollC.scrollWidth - window.innerWidth - 180) / 2; // Note: 180 is to balance tooltip width added to right side
+
+		scrollRef.current.scrollIntoView({ behavior: 'smooth' });
+
+		if (canvasSize.x < window.innerWidth) scrollC.classList.add('narrow');
+
+		// ~~~~~~~~~~~ ZOOM IN/ZOOM OUT BUTTONS ~~~~~~~~~~~~~~~~
+		function updateZoom(zoom) {
+			p5Sketch.style.transform = `scale(${zoom})`;
+			scrollC.style.height = `${initScroll.height * zoom + 25}px`;
+			if (zoom < 1) {
+				p5Sketch.style.height = `${initSketch.height * zoom}px`;
+			}
+			console.log(
+				zoom,
+				initCanvas,
+				initScroll,
+				initSketch,
+				'canvas',
+				canvasC.offsetHeight,
+				'sketch',
+				p5Sketch.offsetHeight,
+				p5Sketch.clientHeight,
+				p5Sketch.style.height,
+				'container',
+				scrollC.offsetHeight,
+				scrollC.clientHeight,
+				scrollC.style.height,
+				scrollC.clientHeight / p5Sketch.clientHeight
+			);
+		}
+
+		document.getElementById('plus').addEventListener('click', () => {
+			zoom += 0.1;
+			updateZoom(zoom);
+		});
+
+		document.getElementById('minus').addEventListener('click', () => {
+			if (zoom > 0.2) zoom -= 0.1;
+			updateZoom(zoom);
+		});
+
+		console.log(
+			zoom,
+			initCanvas,
+			initScroll,
+			initSketch,
+			'canvas',
+			canvasC.offsetHeight,
+			'sketch',
+			p5Sketch.offsetHeight,
+			p5Sketch.clientHeight,
+			p5Sketch.style.height,
+			'container',
+			scrollC.offsetHeight,
+			scrollC.clientHeight,
+			scrollC.style.height,
+			scrollC.clientHeight / p5Sketch.clientHeight
+		);
+	}, [canvasSize.x]);
+
 	// call a locate tree function that takes the document.documentElement.clientWidth - this needs to be used to add to each node's location: location + (clientWidth - furthestRight)/2
 	let setup = (p5, parentRef) => {
-		p5.createCanvas(canvasSize.x + canvasOffsets.x, canvasSize.y + canvasOffsets.y + 100).parent(
-			// added 100 to height to offset tooltip height
-			// document.getElementById('scrollContainer')
-			parentRef
-		);
-
-		let idCount = 0;
 		function drawNodes(node) {
 			let remainingNodes = [node];
 			while (remainingNodes.length) {
@@ -29,7 +96,7 @@ const TreeResults = ({ treeDom, canvasOffsets }) => {
 					.id(idCount)
 					.class('leaf__container');
 				bubble.position(currNode.data_location.x, currNode.data_location.y);
-				bubble.elt.style.zIndex = 10000000 - idCount; // z-index to allow tooltips to overlay the siblings
+				bubble.elt.style.zIndex = 10000 - idCount; // z-index to allow tooltips to overlay the siblings
 				let tooltip = p5.createElement('div').parent(bubble).class('leaf__tooltip');
 				tooltip.html(`
 		      <p style="margin-bottom: 0.5rem"><strong>Element Info</strong></p>
@@ -44,11 +111,16 @@ const TreeResults = ({ treeDom, canvasOffsets }) => {
 				idCount++;
 			}
 		}
+
+		let idCount = 0;
+		p5.createCanvas(canvasSize.x + canvasOffsets.x, canvasSize.y + canvasOffsets.y + 100).parent(
+			// added 100 to height to offset tooltip height
+			parentRef
+		);
 		drawNodes(treeDom);
 	};
 
 	let draw = (p5) => {
-		let idCount = 0;
 		function drawBranches(node, level) {
 			document.getElementById(idCount).classList.add('visible');
 			idCount++;
@@ -72,6 +144,7 @@ const TreeResults = ({ treeDom, canvasOffsets }) => {
 			});
 		}
 
+		let idCount = 0;
 		p5.clear();
 		p5.push();
 		p5.stroke('#864b29');
@@ -79,29 +152,14 @@ const TreeResults = ({ treeDom, canvasOffsets }) => {
 		p5.pop();
 	};
 
-	useEffect(() => {
-		const treeCont = document.getElementById('scrollContainer');
-		treeCont.scrollLeft = (treeCont.scrollWidth - window.innerWidth - 180) / 2; // Note: 180 is to balance tooltip width added to right side
-		scrollRef.current.scrollIntoView({ behavior: 'smooth' });
-		if (canvasSize.x < window.innerWidth) treeCont.classList.add('narrow');
-	}, []);
-
 	return (
-		<div className="results__wrapper" ref={scrollRef}>
-			<div id="scrollContainer" className="sketch__container">
-				<Sketch
-					setup={setup}
-					draw={draw}
-					style={{
-						position: 'relative',
-						// width:
-						// 	canvasSize.x > document.documentElement.clientWidth
-						// 		? ''
-						// 		: document.documentElement.clientWidth,
-						// display: 'flex',
-						// justifyContent: 'center',
-					}}
-				/>
+		<div id="results__wrapper" className="results__wrapper" ref={scrollRef}>
+			<div className="zoom__wrapper">
+				<input type="button" id="plus" value="+" className="zoom__button" />
+				<input type="button" id="minus" value="-" className="zoom__button" />
+			</div>
+			<div id="scroll__container" className="scroll__container">
+				<Sketch setup={setup} draw={draw} />
 			</div>
 		</div>
 	);

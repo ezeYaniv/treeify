@@ -8,13 +8,13 @@
 .treepage__header {
   margin-top: 5rem;
   margin-bottom: 4rem;
-  color: #ec9f52;
+  color: #eba448;
   font-size: 5rem;
 }
 
 .divider {
   width: calc(100% - 100px);
-  border-bottom: 2px solid #ec9f52;
+  border-bottom: 2px solid #eba448;
 }
 
 .error__text {
