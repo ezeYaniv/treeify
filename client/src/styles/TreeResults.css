@@ -1,14 +1,12 @@
 /* ~~~~~~~~~~~~~ CONTAINERS & WRAPPERS ~~~~~~~~~~~~~ */
 .results__wrapper {
 	width: 100%;
-	/* position: relative; */
 }
 
 .scroll__container {
 	overflow-x: scroll;
 	display: flex;
 	transform-origin: top;
-	/* border: 1px white solid; */
 }
 
 [data-testid='react-p5'] {

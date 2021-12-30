@@ -34,23 +34,6 @@ const TreeResults = ({ treeDom, canvasOffsets }) => {
 			if (zoom < 1) {
 				p5Sketch.style.height = `${initSketch.height * zoom}px`;
 			}
-			console.log(
-				zoom,
-				initCanvas,
-				initScroll,
-				initSketch,
-				'canvas',
-				canvasC.offsetHeight,
-				'sketch',
-				p5Sketch.offsetHeight,
-				p5Sketch.clientHeight,
-				p5Sketch.style.height,
-				'container',
-				scrollC.offsetHeight,
-				scrollC.clientHeight,
-				scrollC.style.height,
-				scrollC.clientHeight / p5Sketch.clientHeight
-			);
 		}
 
 		document.getElementById('plus').addEventListener('click', () => {
@@ -62,24 +45,6 @@ const TreeResults = ({ treeDom, canvasOffsets }) => {
 			if (zoom > 0.2) zoom -= 0.1;
 			updateZoom(zoom);
 		});
-
-		console.log(
-			zoom,
-			initCanvas,
-			initScroll,
-			initSketch,
-			'canvas',
-			canvasC.offsetHeight,
-			'sketch',
-			p5Sketch.offsetHeight,
-			p5Sketch.clientHeight,
-			p5Sketch.style.height,
-			'container',
-			scrollC.offsetHeight,
-			scrollC.clientHeight,
-			scrollC.style.height,
-			scrollC.clientHeight / p5Sketch.clientHeight
-		);
 	}, [canvasSize.x]);
 
 	// call a locate tree function that takes the document.documentElement.clientWidth - this needs to be used to add to each node's location: location + (clientWidth - furthestRight)/2
