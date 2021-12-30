@@ -67,4 +67,4 @@ Tl;dr:
 
 ## Screenshots
 
-## ![treeify screenshot]("https://github.com/ezeYaniv/treeify/blob/main/extras/screenshots/Treeify_screenshot.JPG")
+## ![treeify screenshot](https://github.com/ezeYaniv/treeify/blob/main/extras/screenshots/Treeify_screenshot.JPG)
